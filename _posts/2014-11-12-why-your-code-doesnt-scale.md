@@ -152,7 +152,7 @@ Sharding will likely be the solution for write-heavy applications, replication f
 
 The magic bullet! Well, not really, but it can be incredibly helpful. Caching is storing the result of an expensive operation where it is known that the result will again be the same the next time. Like storing the result of a call to an external API into your database. Or storing the result of some expensive query or computation to memcached.
 
-If you have a CNS & store all pages in the database, there's no point in getting that navigation from your database on every single page request. It won't just change at any given time, so you can simply store a static copy of it in cache. Once a new page it added to the navigation, we can just purge/invalidate that cache so that the next time, we'll be fetching the updated navigation from storage. Which can then again be cached...
+If you have a CNS & store all pages in the database, there's no point in getting that navigation from your database on every single page request. It won't just change at any given time, so you can simply store a static copy of it in cache. Once a new page is added to the navigation, we can just purge/invalidate that cache so that the next time, we'll be fetching the updated navigation from storage. Which can then again be cached...
 
 Cache can come in many forms: a memcached or redis server, disk cache, temporary cache in memory... All that matters is that reading the result from it is faster than executing it again.
 
