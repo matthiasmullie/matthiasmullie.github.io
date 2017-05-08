@@ -82,10 +82,10 @@ WHERE
     lng BETWEEN :minlng AND :maxlng
 ```
 
-Or using the SPATIAL extension (no point in keeping `lat` and `lng` floats here; `coordinate` is a `Point`: `GeomFromText(CONCAT("Point(", :lat, " ", :lng, ")"))`):
+Or using the SPATIAL extension (no point in keeping `lat` and `lng` floats here; `coordinate` is a `Point`: `GeomFromText(CONCAT("Point(", :lng, " ", :lat, ")"))`):
 
 ```sql
-WHERE MBRWithin(coordinate, GeomFromText(CONCAT("Polygon((", :maxlat, " ", :maxlng, ",", :maxlat, " ", :minlng, ",", :minlat, " ", :minlng, ",", :minlat, " ", :maxlng, ",", :maxlat, " ", :maxlng, "))")))
+WHERE MBRWithin(coordinate, GeomFromText(CONCAT("Polygon((", :maxlng, " ", :maxlat, ",", :minlng, " ", :maxlat, ",", :minlng, " ", :minlat, ",", :maxlng, " ", :minlat, ",", :maxlng, " ", :maxlat, "))")))
 ```
 
 We have maxed out the speedy retrieval of coordinates, but not all matching coordinates actually fall within the distance we wanted to match. Using these boundaries, we've queried for a 2D square-like area, but we actually want to find results in a circle-like area. Here's an image to simplify why we're not yet done:
