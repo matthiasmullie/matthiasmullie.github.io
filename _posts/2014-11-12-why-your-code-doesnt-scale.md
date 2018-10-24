@@ -24,7 +24,7 @@ Obviously, you will need more infrastructure as you grow. You'll need more machi
 
 ## Horizontal & vertical
 
-**Vertical scaling** means that you increase your overall capacity by increasing the the capacity of its machines. E.g.: if you're running out of disk space, you could add more hard disks to your database server.
+**Vertical scaling** means that you increase your overall capacity by increasing the capacity of its machines. E.g.: if you're running out of disk space, you could add more hard disks to your database server.
 
 **Horizontal scaling** means adding more machines to your setup.
 
